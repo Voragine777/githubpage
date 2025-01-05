@@ -3,18 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
-    <link rel="stylesheet" href="style.css"> <!-- Si tienes un archivo de estilos CSS -->
+    <title>Facebook</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Estilos de la página de login */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: block;
+            margin: 100px auto;
+        }
+        .login-header img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        .login-header h1 {
+            color: #1877f2;
+            font-size: 36px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s ease-in-out;
+        }
+        .input-field:focus {
+            border-color: #1877f2;
+            outline: none;
+        }
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-button:hover {
+            background-color: #165e99;
+        }
+        /* Simulación del Feed de Facebook */
+        .feed-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .post-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .post-header .username {
+            font-weight: bold;
+        }
+        .post-content {
+            margin-top: 10px;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #65676b;
+            font-size: 14px;
+        }
+        .post-footer .like-comment {
+            cursor: pointer;
+        }
+        .emoji-reaction {
+            font-size: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            display: block;
+            background-color: #fff;
+        }
+        .search-bar:focus {
+            outline: none;
+            border-color: #1877f2;
+        }
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .login-container {
+                padding: 20px;
+                margin: 50px auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a Mi Página Web</h1>
-    </header>
-    <main>
-        <p>Esta es una página web simple que estoy hosteando usando GitHub Pages.</p>
-    </main>
-    <footer>
-        <p>&copy; 2025 Mi Nombre</p>
-    </footer>
+
+    <!-- Página de Login -->
+    <div class="login-container" id="login-container">
+        <div class="login-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+            <h1>Facebook</h1>
+        </div>
+
+        <form id="login-form" onsubmit="event.preventDefault(); login();">
+            <input class="input-field" type="text" id="email" placeholder="Correo electrónico o teléfono" required>
+            <input class="input-field" type="password" id="password" placeholder="Contraseña" required>
+            <button class="login-button" type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
+    <!-- Feed de Facebook (Simulado) -->
+    <div class="container" id="feed-container" style="display: none;">
+        <input type="text" class="search-bar" placeholder="Buscar en Facebook...">
+        
+        <div class="feed-container">
+            <!-- Post 1 -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                    <div class="username">Juan Pérez</div>
+                </div>
+                <div class="post-content">
+                    ¡Hoy es un gran día! 😊
+                </div>
+                <div class="post-footer">
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                    <div class="username">María López</div>
+                </div>
+                <div class="post-content">
+                    Acabo de ver una película increíble 🎬🔥
+                </div>
+                <div class="post-footer">
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                    <div class="username">Carlos Gómez</div>
+                </div>
+                <div class="post-content">
+                    <video controls width="100%">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Tu navegador no soporta el formato de video.
+                    </video>
+                </div>
+                <div class="post-footer">
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simula el inicio de sesión y muestra el feed
+        function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                // Simula el login exitoso
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('feed-container').style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
