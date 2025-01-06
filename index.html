@@ -48,6 +48,21 @@
             font-size: 16px;
             box-sizing: border-box;
             transition: border 0.3s ease-in-out;
+
+        }
+        .button-search {
+            padding: 15px 30px;
+            font-size: 15px;
+            margin-left: 10px; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #0400ff; 
+            color: white;
+            position: absolute;
+            top: 35px; 
+            right: 500px;
+
         }
         .input-field:focus {
             border-color: #1877f2;
@@ -114,14 +129,14 @@
             margin: 20px auto;
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #000000;
             font-size: 16px;
             display: block;
             background-color: #fff;
         }
         .search-bar:focus {
             outline: none;
-            border-color: #1877f2;
+            border-color: #000000;
         }
         /* Responsividad */
         @media (max-width: 768px) {
@@ -134,10 +149,51 @@
             }
         }
     </style>
+
+<style>
+    /* Estilo para la ventana modal */
+    .modal {
+        display: none; /* Ocultamos la ventana por defecto */
+        position: fixed; /* Fija la ventana */
+        z-index: 1; /* Asegura que la ventana se superponga al contenido */
+        left: 0;
+        top: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        height: 100%; /* Ocupa toda la altura */
+        overflow: auto; /* Permite el desplazamiento si es necesario */
+        background-color: rgb(0, 0, 0,0.4); /* Fondo semitransparente */
+        background-color: rgba(0,0,0,0.4); /* Fondo semitransparente */
+    }
+
+    /* Estilo para el contenido de la ventana modal */
+    .modal-content {
+        background-color: #252525;
+        margin: 15% auto; /* Centra la ventana */
+        padding: 20px;
+        border: 1px solid #000000;
+        width: 80%; /* Establece el ancho de la ventana */
+    }
+
+    /* Botón para cerrar la ventana modal */
+    .close {
+        color: #ffffff;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: rgb(240, 46, 46);
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
 </head>
 <body>
 
-    <!-- Página de Login -->
+    <!-- Inicio de Sesión -->
     <div class="login-container" id="login-container">
         <div class="login-header">
             <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
@@ -151,9 +207,9 @@
         </form>
     </div>
 
-    <!-- Feed de Facebook (Simulado) -->
+    <!-- Feed de Facebook -->
     <div class="container" id="feed-container" style="display: none;">
-        <input type="text" class="search-bar" placeholder="Buscar en Facebook...">
+        <input type="text" class="search-bar" placeholder="Buscar en Facebook..."> <button class="button-search" id="myBtn">Buscar</button>
         
         <div class="feed-container">
             <!-- Post 1 -->
@@ -163,11 +219,11 @@
                     <div class="username">Juan Pérez</div>
                 </div>
                 <div class="post-content">
-                    ¡Hoy es un gran día! 😊
+                    ¡Será un gran día! 😊
                 </div>
                 <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (234)</span>
                 </div>
             </div>
 
@@ -178,15 +234,45 @@
                     <div class="username">María López</div>
                 </div>
                 <div class="post-content">
-                    Acabo de ver una película increíble 🎬🔥
+                    ¡Acabo de ver una película increíble! 🎬🔥
                 </div>
                 <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (894)</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (256)</span>
                 </div>
             </div>
 
-            <!-- Video -->
+            <!-- Post 3-->
+             <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                    <div class="username"> Juan Carlos</div>
+                </div>
+                <div class="post-content">
+                    ¡Tengan un buen día! 😊
+                </div>
+                <div class="post-footer">
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (500)</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (94)</span>
+                </div>
+            </div>
+
+            <!-- Post 4 -->
+             <div class="post">
+                <div class="post-header">
+                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                    <div class="username"> Eduardo Flores</div>
+                </div>
+                <div class="post-content">
+                    
+                </div> Wazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                <div class="post-footer">
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (200K)</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (980)</span>
+                </div>
+            </div>
+
+
             <div class="post">
                 <div class="post-header">
                     <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
@@ -195,19 +281,50 @@
                 <div class="post-content">
                     <video controls width="100%">
                         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Tu navegador no soporta el formato de video.
+                        Tu navegador no soporta el formato de video
                     </video>
                 </div>
                 <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios</span>
+                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
+                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (947)</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h1 style="color: #fff;">Error</h1> 
+            <p style="color: #fff;">Hemos encontrado un error fatal al intentar buscar ''</p>
+
+        </div>
+    </div>
+
     <script>
-        // Simula el inicio de sesión y muestra el feed
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+
+
         function login() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
