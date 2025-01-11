@@ -1,0 +1,258 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2b2b2b;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* Estilos de la página de login */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: block;
+    margin: 100px auto;
+}
+.login-header img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+.login-header h1 {
+    color: #1877f2;
+    font-size: 36px;
+    margin: 0;
+    font-weight: bold;
+}
+.input-field {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s ease-in-out;
+
+}
+.descarga {
+    top: 35px; 
+    right: 20px;
+    cursor: pointer;
+    background-color: f4f4f4; 
+    color: rgb(0, 54, 231);
+    position: absolute;
+
+
+}
+.button-search {
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: 10px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0400ff; 
+    color: white;
+    position: absolute;
+    top: 35px; 
+    right: 600px;
+
+}
+.button-perfil {
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: 10px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0400ff; 
+    color: white;
+    position: absolute;
+    top: 20px; 
+    right: 20px;
+
+}
+.button-account {
+width: 100%;
+    padding: 15px;
+    background-color: #039723;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+
+
+}
+.input-field:focus {
+    border-color: #1877f2;
+    outline: none;
+}
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.login-button:hover {
+    background-color: #165e99;
+}
+/* Simulación de los Posts de Facebook */
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.post {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.post-header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.post-header .username {
+    font-weight: bold;
+}
+.post-content {
+    margin-top: 10px;
+}
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #65676b;
+    font-size: 14px;
+}
+.post-footer .like-comment {
+    cursor: pointer;
+}
+.emoji-reaction {
+    font-size: 20px;
+}
+.search-bar {
+    width: 100%;
+    max-width: 360px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    font-size: 16px;
+    display: block;
+    background-color: #fff;
+}
+.search-bar:focus {
+    outline: none;
+    border-color: #000000;
+}
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .login-container {
+        padding: 20px;
+        margin: 50px auto;
+    }
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0, 0, 0,0.4);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #252525;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #000000;
+    width: 80%; 
+}
+
+
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(240, 46, 46);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
